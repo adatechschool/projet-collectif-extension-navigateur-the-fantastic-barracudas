@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Ideas Nest",
+  "version": "1.0",
+  "description": "Capture tes idées en naviguant sur le web",
+  "permissions": ["activeTab","storage","contextMenus"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon" :{
+      "16":"./images/IdeasNestLogo.png",
+      "32":"./images/IdeasNestLogo.png",
+      "48":"./images/IdeasNestLogo.png",
+      "128":"./images/IdeasNestLogo.png"
+    }
+  },
+  "icons":{
+     "16":"./images/IdeasNestLogo.png",
+      "32":"./images/IdeasNestLogo.png",
+      "48":"./images/IdeasNestLogo.png",
+      "128":"./images/IdeasNestLogo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background":{
+    "service_worker" : "background.js"
+  }
+}
