@@ -1,13 +1,19 @@
+//Récuperer le message du fichier content et le stocker sur le storage local.
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    chrome.storage.local.get({ images: [] }, function (data) {
+        let image = data.images
+        image.push(message.url);
+        chrome.storage.local.set({ images: image });
+        console.log(image);
+    })
+})
 
-// chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-//     console.log('Message reçu :', message.greeting);
-//     chrome.storage.local.set({ greeting: message.greeting })
-// })
+// const contextMenuItem = {
+//     "id": "Ideas Nest",
+//     "title": "Envoyer vers Ideas Nest",
+//     "contexts": ["selection"]
+// };
+// chrome.contextMenus.create(contextMenuItem);
 
-const contextMenuItem = {
-    "id": "Ideas Nest",
-    "title": "Envoyer vers Ideas Nest",
-    "contexts": ["selection"]
-};
-chrome.contextMenus.create(contextMenuItem);
+
 

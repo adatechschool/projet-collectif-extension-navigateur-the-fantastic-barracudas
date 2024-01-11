@@ -1,13 +1,19 @@
+//Récuperer l'url des images que l'on a stocké dans le background.
 document.addEventListener("DOMContentLoaded", function () {
-    if (chrome.storage && chrome.storage.local) {
-        chrome.storage.local.get("greeting", function (data) {
-            if (data.greeting) {
-                console.log("Message reçu dans la popup:", data.greeting);
-            }
-        });
-    } else {
-        console.log("chrome.storage.local n'est pas disponible.");
-    }
-});
-console.log("popup");
+    chrome.storage.local.get({ images: [] }, function (data) {
+        console.log(data.images);
 
+        //On itère sur chaque élément du tableau data.images et on crée la card dynamiquement.
+        for (let i = 0; i < data.images.length; i++) {
+            const article = data.images[i];
+            const baliseArticle = document.createElement('article');
+
+            const image = document.createElement("img");
+            image.src = article;
+
+            document.querySelector(".img").appendChild(baliseArticle);
+            baliseArticle.appendChild(image);
+        }
+
+    });
+})
