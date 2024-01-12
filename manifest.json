@@ -3,21 +3,21 @@
   "name": "Ideas Nest",
   "version": "1.0",
   "description": "Capture tes idées en naviguant sur le web",
-  "permissions": ["activeTab","storage","contextMenus"],
+  "permissions": ["activeTab", "storage", "contextMenus", "scripting"],
   "action": {
     "default_popup": "popup.html",
-    "default_icon" :{
-      "16":"./images/logo.png",
-      "32":"./images/logo.png",
-      "48":"./images/logo.png",
-      "128":"./images/logo.png"
+    "default_icon": {
+      "16": "./images/logo.png",
+      "32": "./images/logo.png",
+      "48": "./images/logo.png",
+      "128": "./images/logo.png"
     }
   },
-  "icons":{
-     "16":"./images/logo.png",
-      "32":"./images/logo.png",
-      "48":"./images/logo.png",
-      "128":"./images/logo.png"
+  "icons": {
+    "16": "./images/logo.png",
+    "32": "./images/logo.png",
+    "48": "./images/logo.png",
+    "128": "./images/logo.png"
   },
   "content_scripts": [
     {
@@ -25,7 +25,7 @@
       "js": ["content.js"]
     }
   ],
-  "background":{
-    "service_worker" : "background.js"
+  "background": {
+    "service_worker": "background.js"
   }
 }

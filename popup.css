@@ -1,127 +1,143 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@300;400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Montserrat:wght@300;400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
-body{
-   height: 500px;
-   width: 400px;
-/* background:
+body {
+  height: 500px;
+  width: 400px;
+  /* background:
         linear-gradient(90deg, #ADE2FF 0%, #1F618D 100%),
         radial-gradient(at top, rgba(105, 159, 207, 0.50) 0%, rgba(31, 97, 141, 0.55) 100%),
         radial-gradient(at top, rgba(105, 159, 207, 0.50) 0%, rgba(31, 97, 141, 0.08) 63%);
     background-blend-mode: multiply, screen; */
-    background-color: black;
-   margin: 0;
-   padding: 0;
-   font-family: "Ubuntu", sans-serif;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
 }
 
-.menu-nav{
-    display: flex;
-    justify-content:space-between;
-    padding:0 5px 0 5px;
-    align-items: center;
-    border-bottom: 1px solid #FFECCC;
+.menu-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px 0 5px;
+  align-items: center;
+  border-bottom: 1px solid #ffeccc;
 }
 
-h1{
-    color:#FFECCC;
+h1 {
+  color: #ffeccc;
 }
 
-#logo{
-    border-radius: 50%;
+#logo {
+  border-radius: 50%;
 }
 #menu-burger span {
-    display: block;
-    margin: 4px;
-    height: 3px;
-    width: 20px;
-    background:#FFECCC;
-    border-radius: 9px;
+  display: block;
+  margin: 4px;
+  height: 3px;
+  width: 20px;
+  background: #ffeccc;
+  border-radius: 9px;
 }
 
-
-.toggle-plus{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+.toggle-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
-.container-toggle{
-    position: absolute;
-    left: 5px;
+.container-toggle {
+  position: absolute;
+  left: 5px;
 }
 
-.plus{
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.plus {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.img{
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 5px;
-    margin: 8px;
-    padding: 8px;
+.img {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 2, 1fr);
+  gap: 5px;
+  margin: 8px;
+  padding: 8px;
 }
 
-.img article img{
-    display: block;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+.img article img {
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article {
+  position: relative;
+  border: solid 2px white;
+}
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+article:hover button {
+  display: block;
+}
+p {
+  color: white;
 }
 /*-----------------------Toggle------------------------*/
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 24px;
-
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
 }
 
 /* Cache l'input */
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* Style du slider */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
-input:checked+.slider {
-    background-color: #E39D22;
+input:checked + .slider {
+  background-color: #e39d22;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #E39D22;
+input:focus + .slider {
+  box-shadow: 0 0 1px #e39d22;
 }
 
-input:checked+.slider:before {
-    transform: translateX(16px);
+input:checked + .slider:before {
+  transform: translateX(16px);
 }
 /*-----------------------------------------------------*/
