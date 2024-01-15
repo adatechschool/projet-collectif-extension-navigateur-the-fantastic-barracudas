@@ -8,7 +8,6 @@ function selectUrl(e) {
 
 function selectText() {
   const selectedText = window.getSelection().toString();
-  console.log(selectText);
   if (selectedText.rangeCount > 0 || selectedText !== "\n") {
     console.log(selectedText);
     chrome.runtime.sendMessage({ text_content: selectedText });
