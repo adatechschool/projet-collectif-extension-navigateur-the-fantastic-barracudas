@@ -8,12 +8,12 @@ L'extension de navigateur pour sauvegarder en quelques clics toutes tes idées g
 
 Ideas Nest est une extension de navigateur conçue pour Google Chrome qui utilise l'API Chrome Extension pour sauvegarder du texte et des images facilement et rapidement. Active l'extension et il ne te reste plus qu'à cliquer sur une image et/ou sélectionner du texte pour que tout s'enregistre automatiquement dans Ideas Nest.
 
-![Nom de l'image](./images/Screenshot_ouverture_extension.png)
-![Nom de l'image](./images/Screenshot_extension_active.png)
+![Capture d'écran Ideas Next à l'ouveture de l'extension](./images/Screenshot_ouverture_extension.png)
+![Capture d'écran Ideas Next activée](./images/Screenshot_extension_active.png)
 
 ## Projet
 
-Ce projet a été réalisé par un groupe de 4 apprenant·e·s à l'école Ada Tech School, sur une durée de quinze jours.
+Ce projet a été réalisé par un groupe de 4 apprenant·e·s à l'école Ada Tech School, sur une durée de sept jours.
 
 ## Mises à jour / améliorations envisagées
 
