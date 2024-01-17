@@ -1,9 +1,27 @@
-//Récuperer l'url des images que l'on a stocké dans le background.
+//----------------------------------Fonction toggle-----------------------------------------
+
+// On envoie l'état actuel du toggle (true ou false) au content :
+
+document.getElementById("toggle").addEventListener("change", function () {
+  console.log(this.checked);
+  const etatToggle = this.checked;
+
+  chrome.storage.sync.set({ etatToggle: etatToggle });
+
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { toggleEtat: etatToggle });
+  });
+
+});
+
+
+// Afficher les images et le texte sélectionnés dans une card dans l'HTML :
+
 function createCard(content, index, type) {
   const section = document.querySelector(".idea-container");
   const baliseArticle = document.createElement("article");
   const deleteBtn = document.createElement("button");
-  const existingButton = document.querySelector(".idea-container .create");
+
 
   baliseArticle.id = type + "-" + index;
   deleteBtn.className = "delete";
@@ -26,16 +44,20 @@ function createCard(content, index, type) {
   }
 
   baliseArticle.appendChild(deleteBtn);
-  section.insertBefore(baliseArticle, existingButton);
+  section.appendChild(baliseArticle);
 }
-//------------------------------------------------------------------------------
-async function deleteArticle(index, type) {
-  try {
-    const data = await chrome.storage.local.get({ [type]: [] });
+
+//-------------------------------Fonction pour suppression---------------------------------------
+
+//Supprime les images et les textes sur la popup et leurs index dans le tableau :
+
+function deleteArticle(index, type) {
+
+  chrome.storage.sync.get({ [type]: [] }, function (data) {
     let items = data[type];
     if (index >= 0 && index < items.length) {
       items.splice(index, 1);
-      await chrome.storage.local.set({ [type]: items });
+      chrome.storage.sync.set({ [type]: items });
       // Supprimer l'élément du DOM
       const elementId = type + "-" + index;
       const elementToRemove = document.getElementById(elementId);
@@ -44,47 +66,39 @@ async function deleteArticle(index, type) {
       }
     } else {
       console.error("Index hors limites lors de la tentative de suppression.");
-    }
-  } catch (error) {
-    console.error("Une erreur s'est produite dans deleteImage:", error);
-  }
+    };
+
+
+  })
 }
-//------------------------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", async function () {
-  try {
-    const dataToogle = await chrome.storage.local.get("etatToggle");
-    if (dataToogle.etatToggle !== undefined) {
+
+//-----------------------------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () { //quand la page est chargée :
+
+  chrome.storage.sync.get("etatToggle", function (data) { //on récupère l'état du toggle
+    if (data.etatToggle !== undefined) {
       console.log("toggle");
-      document.getElementById("toggle").checked = dataToogle.etatToggle;
+      document.getElementById("toggle").checked = data.etatToggle;
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {
-          toggleEtat: dataToogle.etatToggle,
+        chrome.tabs.sendMessage(tabs[0].id, { //on renvoie un msg au content sur l'état du toggle
+          toggleEtat: data.etatToggle,
         });
       });
-    }
+    };
+  })
 
-    // Utilisation de la fonction de creation de card =)
-    const data = await chrome.storage.local.get({ images: [], tab_textes: [] });
+
+  // Utilisation de la fonction de creation de card :
+
+  chrome.storage.sync.get({ images: [], tab_textes: [] }, function (data) {
     console.log(data.images, data.tab_textes);
     data.images.forEach((url, index) => createCard(url, index, "images"));
     data.tab_textes.forEach((text, index) =>
       createCard(text, index, "tab_textes")
     );
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données :", error);
-  }
-});
-//------------------------------------------------------------------------------
-document.getElementById("toggle").addEventListener("change", async function () {
-  console.log(this.checked);
-  const etatToggle = this.checked;
-  try {
-    await chrome.storage.local.set({ etatToggle: etatToggle });
+  });
 
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, { toggleEtat: etatToggle });
-    });
-  } catch (error) {
-    console.error("Erreur lors de la sauvegarde de l'état du toggle :", error);
-  }
 });
+
+

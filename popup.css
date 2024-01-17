@@ -90,16 +90,6 @@ p {
   color: white;
 }
 
-/*-----------------------button------------------------*/
-.create {
-  text-align: center;
-  padding: 12px 16px;
-
-  border-radius: 6px;
-  background: var(--Red-Red-80, #ff6934);
-  border: none;
-  color: white;
-}
 /*-----------------------Toggle------------------------*/
 .switch {
   position: relative;
