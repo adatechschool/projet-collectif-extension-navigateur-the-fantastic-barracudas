@@ -17,4 +17,6 @@ Ce projet a été réalisé par un groupe de 4 apprenant·e·s à l'école Ada T
 
 ## Mises à jour / améliorations envisagées
 
-Création de dossiers pour gérer les thèmes enregistrés.
+* Création de dossiers pour gérer les thèmes enregistrés
+* Création d'une barre de recherche pour les dossiers
+* Possibilité de mettre des items en favoris
